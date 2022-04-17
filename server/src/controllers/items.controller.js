@@ -6,7 +6,6 @@ const lastname = "Del Valle";
 module.exports = {
   async searchItems(req, res) {
     try {
-      console.log(req);
       res
         .status(200)
         .json({ message: 'Solicitud cargada con éxito.' });
