@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/items", itemsRouter);
+app.use("/api/items", itemsRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
