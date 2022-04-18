@@ -13,7 +13,7 @@ var app = express_1["default"]();
 app.use(express_1["default"].json());
 app.use(cors_1["default"]());
 app.use(morgan_1["default"]("dev"));
-app.use("/items", items_1["default"]);
+app.use("/api/items", items_1["default"]);
 app.listen(port, function () {
     // eslint-disable-next-line no-console
     console.log("App running at http://localhost:" + port);

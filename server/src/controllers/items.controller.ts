@@ -5,7 +5,7 @@ import { RequestHandler } from "express";
 const authorName = "Sara";
 const authorLastName = "Del Valle";
 
-export const searchItems: RequestHandler = async (req, res) => {
+export const searchItems: RequestHandler<{q: string}> = async (req, res) => {
   try {
     const {
       query: { q },
@@ -48,7 +48,7 @@ export const searchItems: RequestHandler = async (req, res) => {
   }
 };
 
-export const getItem: RequestHandler = async (req, res) => {
+export const getItem: RequestHandler<{id: string}> = async (req, res) => {
   try {
     const {
       params: { id },
