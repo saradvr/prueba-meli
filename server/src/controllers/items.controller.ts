@@ -5,19 +5,19 @@ import { RequestHandler } from "express";
 const authorName = "Sara";
 const authorLastName = "Del Valle";
 
-export const searchItems: RequestHandler<{q: string}> = async (req, res) => {
+export const searchItems: RequestHandler<{ q: string }> = async (req, res) => {
   try {
     const {
       query: { q },
     } = req;
     const { data: search } = await axios.get(
-      `https://api.mercadolibre.com/sites/MLA/search?q=${q}`,
+      `https://api.mercadolibre.com/sites/MLA/search?q=${q}`
     );
     const { data: categories } = await axios.get(
-      `https://api.mercadolibre.com/categories/${search.results[0].category_id}`,
+      `https://api.mercadolibre.com/categories/${search.results[0].category_id}`
     );
     const categoriesBreadcrumbs: string[] = categories.path_from_root.map(
-      (el: { id: string; name: string }) => el.name,
+      (el: { id: string; name: string }) => el.name
     );
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const items: Item[] = search.results.map((el: any) => ({
@@ -48,22 +48,22 @@ export const searchItems: RequestHandler<{q: string}> = async (req, res) => {
   }
 };
 
-export const getItem: RequestHandler<{id: string}> = async (req, res) => {
+export const getItem: RequestHandler<{ id: string }> = async (req, res) => {
   try {
     const {
       params: { id },
     } = req;
     const { data: product } = await axios.get(
-      `https://api.mercadolibre.com/items/${id}`,
+      `https://api.mercadolibre.com/items/${id}`
     );
     const { data: description } = await axios.get(
-      `https://api.mercadolibre.com/items/${id}/description`,
+      `https://api.mercadolibre.com/items/${id}/description`
     );
     const { data: categories } = await axios.get(
-      `https://api.mercadolibre.com/categories/${product.category_id}`,
+      `https://api.mercadolibre.com/categories/${product.category_id}`
     );
     const categoriesBreadcrumbs: string[] = categories.path_from_root.map(
-      (el: { id: string; name: string }) => el.name,
+      (el: { id: string; name: string }) => el.name
     );
     const item: ItemResponse = {
       author: {
