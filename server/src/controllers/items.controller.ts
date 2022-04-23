@@ -26,7 +26,6 @@ export const searchItems: RequestHandler<{ q: string }> = async (req, res) => {
       price: {
         currency: el.currency_id,
         amount: el.price,
-        decimals: 0,
       },
       picture: el.thumbnail,
       condition: el.condition,
@@ -76,7 +75,6 @@ export const getItem: RequestHandler<{ id: string }> = async (req, res) => {
         price: {
           currency: product.currency_id,
           amount: product.price,
-          decimals: 0,
         },
         picture: product.pictures[0].url,
         condition: product.condition,

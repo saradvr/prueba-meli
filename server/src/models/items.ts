@@ -4,7 +4,6 @@ export type Item = {
   price: {
     currency: string;
     amount: number;
-    decimals: number;
   };
   picture: string;
   condition: string;
