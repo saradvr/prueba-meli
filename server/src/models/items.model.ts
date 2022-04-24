@@ -14,18 +14,17 @@ export type Item = {
 };
 
 export type ItemResponse = {
-  author: {
-    name: string;
-    lastname: string;
-  };
+  author: Author;
   item: Item;
 };
 
 export type SearchResult = {
-  author: {
-    name: string;
-    lastname: string;
-  };
+  author: Author;
   categories: string[];
   items: Item[];
+};
+
+export type Author = {
+  name: string;
+  lastname: string;
 };

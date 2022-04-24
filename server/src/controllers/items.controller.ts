@@ -1,4 +1,4 @@
-import { Item, ItemResponse, SearchResult } from "./../models/items";
+import { Item, ItemResponse, SearchResult } from "./../models/items.model";
 import axios from "axios";
 import { RequestHandler } from "express";
 
