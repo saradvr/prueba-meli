@@ -1,0 +1,8 @@
+@use "../../../../styles/foundation/" as *;
+
+.btn-icon {
+  width: 32px;
+  background-color: map-get($map: $colors, $key: "grey-4");
+  border: none;
+  cursor: pointer;
+}
