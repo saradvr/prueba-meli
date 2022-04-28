@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 import {
   Link,
   Outlet,
@@ -7,48 +6,14 @@ import {
   Route,
   useSearchParams,
   useParams,
-  useNavigate,
 } from "react-router-dom";
-import {
-  IconButton,
-  IconButtonTypes,
-  IconButtonVarieties,
-} from "./components/core/buttons/IconButton";
-import { Input, InputTypes } from "./components/core/forms/Input";
-import iconSearch from "./styles/foundation/icons/ic_Search.png";
-
-const Search = () => {
-  const navigate = useNavigate();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (inputRef.current) {
-      navigate(`/items?search=${inputRef.current.value}`);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        ref={inputRef}
-        placeholder="Nunca dejes de buscar"
-        type={InputTypes.Search}
-      />
-      <IconButton
-        type={IconButtonTypes.Submit}
-        variety={IconButtonVarieties.Search}
-        iconUrl={iconSearch}
-        altIcon="Botón de búsqueda"
-      />
-    </form>
-  );
-};
+import { SearchBar } from "./components/content/SearchBar/SearchBar";
 
 const Layout = () => {
   return (
     <>
-      <Search />
+      {/* eslint-disable-next-line no-console*/}
+      <SearchBar handleSubmit={() => console.log("envió")} />
       <Outlet />
     </>
   );
