@@ -9,6 +9,13 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom";
+import {
+  IconButton,
+  IconButtonTypes,
+  IconButtonVarieties,
+} from "./components/core/buttons/IconButton";
+import { Input, InputTypes } from "./components/core/forms/Input";
+import iconSearch from "./styles/foundation/icons/ic_Search.png";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -23,8 +30,17 @@ const Search = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input ref={inputRef} placeholder="Nunca dejes de buscar" />
-      <button type="submit">Buscar</button>
+      <Input
+        ref={inputRef}
+        placeholder="Nunca dejes de buscar"
+        type={InputTypes.Search}
+      />
+      <IconButton
+        type={IconButtonTypes.Submit}
+        variety={IconButtonVarieties.Search}
+        iconUrl={iconSearch}
+        altIcon="Botón de búsqueda"
+      />
     </form>
   );
 };

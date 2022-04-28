@@ -1,13 +1,20 @@
 import { SyntheticEvent } from "react";
 
 export type IconButtonProps = {
-  type: IconButtonTypes;
+  type?: IconButtonTypes;
+  variety: IconButtonVarieties;
   iconUrl: string;
   altIcon: string;
-  click: (e?: SyntheticEvent) => unknown;
+  click?: (e?: SyntheticEvent) => unknown;
   addClass?: string;
 };
 
-export enum IconButtonTypes {
+export enum IconButtonVarieties {
   Search = "search",
+}
+
+export enum IconButtonTypes {
+  Submit = "submit",
+  Button = "button",
+  Reset = "reset",
 }
