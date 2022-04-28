@@ -1,0 +1,9 @@
+.input-search {
+  border: none;
+  font-size: 18px;
+  padding: 7px 15px 9px 15px;
+
+  &:focus {
+    outline-style: none;
+  }
+}

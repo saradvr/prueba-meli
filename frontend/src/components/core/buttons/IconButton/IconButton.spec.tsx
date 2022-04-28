@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { IconButton } from "./IconButton";
-import { IconButtonTypes } from "./IconButton-types";
+import { IconButtonTypes, IconButtonVarieties } from "./IconButton-types";
 
 const iconUrlMock =
   "https://cdn.icon-icons.com/icons2/2469/PNG/512/magnifier_magnifying_glass_icon_149435.png";
@@ -14,7 +14,8 @@ describe("IconButton test", () => {
         iconUrl={iconUrlMock}
         altIcon="Search button"
         click={mockClick}
-        type={IconButtonTypes.Search}
+        variety={IconButtonVarieties.Search}
+        type={IconButtonTypes.Button}
       />
     );
     screen.getByAltText("Search button");
@@ -25,7 +26,8 @@ describe("IconButton test", () => {
         iconUrl={iconUrlMock}
         altIcon="Search button"
         click={mockClick}
-        type={IconButtonTypes.Search}
+        variety={IconButtonVarieties.Search}
+        type={IconButtonTypes.Button}
       />
     );
     const btn = screen.getByRole("button");
