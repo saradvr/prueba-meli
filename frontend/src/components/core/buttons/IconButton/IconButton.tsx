@@ -38,9 +38,9 @@ IconButton.defaultProps = {
 };
 
 IconButton.propTypes = {
-  //
-  type: IconButtonTypes_Proptypes.isRequired,
   // One of the IconButtonTypes that is defined in the types file.
+  type: IconButtonTypes_Proptypes.isRequired,
+  // One of the IconButtonVarieties that is defined in the types file.
   variety: IconButtonVarieties_Proptypes.isRequired,
   // Source for the icon, that could be external or a local image import
   iconUrl: string.isRequired,
