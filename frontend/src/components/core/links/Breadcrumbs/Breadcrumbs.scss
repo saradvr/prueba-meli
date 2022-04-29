@@ -1,0 +1,11 @@
+@use "../../../../styles/foundation/" as f;
+.breadcrumbs {
+  display: flex;
+  margin: 16px 0;
+  font-size: 14px;
+  a {
+    margin: 0 7px;
+    color: map-get($map: f.$colors, $key: "gray-2");
+    text-decoration: none;
+  }
+}

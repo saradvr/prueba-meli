@@ -1,0 +1,30 @@
+@use "../../../styles/foundation/" as f;
+
+.results-layout {
+  grid-row-gap: 0;
+  .results {
+    grid-column: 1 / span 6;
+    margin-bottom: 20px;
+  }
+  .breadcrumbs {
+    grid-column: 1 / span 6;
+  }
+}
+
+.results-layout.grid {
+  grid-row-gap: 0;
+}
+
+@media screen and #{f.$mq-tablet} {
+  .results-layout {
+    .results {
+      grid-column: 2 / span 10;
+    }
+    .breadcrumbs {
+      grid-column: 2 / span 10;
+    }
+    .product-detail {
+      grid-column: 2 / span 10;
+    }
+  }
+}

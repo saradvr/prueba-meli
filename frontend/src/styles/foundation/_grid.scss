@@ -1,0 +1,22 @@
+@use "media-queries" as *;
+@use "sass:math";
+
+@mixin sizeGrid($initialColumn, $size, $originalSize) {
+  grid-column: $initialColumn / span
+    math.ceil(math.div($size, 12) * $originalSize);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  padding: 0 3%;
+}
+
+@media screen and #{$mq-tablet} {
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}

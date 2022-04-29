@@ -1,0 +1,18 @@
+@use "../../../../styles/foundation";
+.input-search {
+  border: none;
+  font-size: 16px;
+  padding: 7px 15px 9px 15px;
+  vertical-align: bottom;
+  width: 100%;
+
+  &:focus {
+    outline-style: none;
+  }
+}
+
+@media screen and #{foundation.$mq-tablet} {
+  .input-search {
+    font-size: 18px;
+  }
+}
