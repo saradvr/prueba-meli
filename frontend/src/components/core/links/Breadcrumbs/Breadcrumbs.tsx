@@ -29,6 +29,8 @@ Breadcrumbs.defaultProps = {
 };
 
 Breadcrumbs.propTypes = {
+  // List of categories to show
   categories: arrayOf(string).isRequired,
+  // Additional class for the component
   addClass: string,
 };
