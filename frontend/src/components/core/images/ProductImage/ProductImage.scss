@@ -1,10 +1,23 @@
+@use "../../../../styles/foundation/" as f;
+
 .product-image-result-card {
-  width: 180px;
-  height: 180px;
+  width: 80px;
+  height: 80px;
   border-radius: 4px;
   margin: 16px;
 }
 
 .product-image-details {
   width: 680px;
+}
+
+@media screen and #{f.$mq-tablet} {
+  .product-image-result-card {
+    width: 180px;
+    height: 180px;
+  }
+
+  .product-image-details {
+    width: 680px;
+  }
 }

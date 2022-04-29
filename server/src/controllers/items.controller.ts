@@ -30,6 +30,7 @@ export const searchItems: RequestHandler<{ q: string }> = async (req, res) => {
       picture: el.thumbnail,
       condition: el.condition,
       free_shipping: el.shipping.free_shipping,
+      state: el.seller_address.state.name,
     }));
     const searchResult: SearchResult = {
       author: {
@@ -82,6 +83,7 @@ export const getItem: RequestHandler<{ id: string }> = async (req, res) => {
         sold_quantity: product.sold_quantity,
         description: description.plain_text,
         categories: categoriesBreadcrumbs,
+        state: product.seller_address.state.name,
       },
     };
     res.status(200).json({ message: "Solicitud cargada con éxito.", item });

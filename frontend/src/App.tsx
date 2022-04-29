@@ -17,6 +17,7 @@ import {
   ProductImage,
   ProductImageTypes,
 } from "./components/core/images/ProductImage/";
+import { ResultCard } from "./components/content/ResultCard/ResultCard";
 
 const Layout = () => {
   return (
@@ -61,12 +62,7 @@ const Results = () => {
         {searchParams.get("search") ? (
           items.map((item: ProductType) => (
             <li key={item.id}>
-              <ProductImage
-                image={item.picture}
-                altImage={item.title}
-                type={ProductImageTypes.CardResult}
-              />
-              <Link to={item.id}>{item.title}</Link>
+              <ResultCard product={item} />
             </li>
           ))
         ) : (
