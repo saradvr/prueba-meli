@@ -7,13 +7,12 @@ import {
   useSearchParams,
   useParams,
 } from "react-router-dom";
-import { SearchBar } from "./components/content/SearchBar/SearchBar";
+import { Header } from "./components/page/Header";
 
 const Layout = () => {
   return (
     <>
-      {/* eslint-disable-next-line no-console*/}
-      <SearchBar handleSubmit={() => console.log("envió")} />
+      <Header />
       <Outlet />
     </>
   );
@@ -28,7 +27,7 @@ const LayoutResults = () => {
   );
 };
 
-const Home = () => <div>MERCADO LIBRE</div>;
+const Home = () => <div></div>;
 
 const Results = () => {
   const [searchParams] = useSearchParams();

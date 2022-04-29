@@ -1,5 +1,12 @@
+@use "../../../styles/foundation/" as *;
 .search-bar {
-  max-width: 600px;
-  padding: 8px 1px;
-  border-radius: 2px;
+  display: flex;
+  grid-column: 2 / span 5;
+  width: 100%;
+}
+
+@media screen and #{$mq-tablet} {
+  .search-bar {
+    grid-column: 3 / span 9;
+  }
 }

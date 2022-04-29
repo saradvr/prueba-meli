@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import classNames from "classnames";
-// import { useNavigate } from "react-router-dom";
 import {
   IconButton,
   IconButtonTypes,
@@ -8,22 +7,20 @@ import {
 } from "../../core/buttons/IconButton";
 import { Input, InputTypes } from "../../core/forms/Input";
 import { SearchBarProps } from "./SearchBar-types";
-import iconSearch from "../../../styles/foundation/icons/ic_Search.png";
-import { func, string } from "prop-types";
+import iconSearch from "../../../styles/foundation/images/ic_Search.png";
+import { string } from "prop-types";
+import { useNavigate } from "react-router-dom";
+import "./SearchBar.scss";
 
-export const SearchBar = ({
-  handleSubmit,
-  addClass,
-}: SearchBarProps): React.ReactElement => {
-  // const navigate = useNavigate();
+export const SearchBar = ({ addClass }: SearchBarProps): React.ReactElement => {
+  const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   if (inputRef.current) {
-  //     navigate(`/items?search=${inputRef.current.value}`);
-  //   }
-  // };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    navigate(`/items?search=${inputRef.current!.value}`);
+  };
 
   const classes = classNames("search-bar", addClass);
 
@@ -49,8 +46,6 @@ SearchBar.defaultProps = {
 };
 
 SearchBar.propTypes = {
-  // function to execute when submit
-  handleSubmit: func.isRequired,
   // additional class to add to the SearchBar
   addClass: string,
 };
