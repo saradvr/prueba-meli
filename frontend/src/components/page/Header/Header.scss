@@ -1,0 +1,22 @@
+@use "../../../styles/foundation";
+
+.header {
+  background-color: map-get($map: foundation.$colors, $key: "primary");
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.logo-meli {
+  width: 80%;
+}
+
+.link-logo {
+  align-self: center;
+  grid-column: 1 / 1 span;
+}
+
+@media screen and #{foundation.$mq-tablet} {
+  .link-logo {
+    grid-column: 2 / 1 span;
+  }
+}

@@ -1,4 +1,4 @@
-@use "foundation";
+@use "foundation" as *;
 * {
   box-sizing: border-box;
 }
@@ -7,7 +7,7 @@ body {
   margin: 0;
   font-family: "Proxima Nova", -apple-system, "Helvetica Neue", Helvetica,
     Roboto, Arial, sans-serif;
-  background-color: map-get($map: foundation.$colors, $key: "gray-4");
+  background-color: map-get($map: $colors, $key: "gray-4");
 }
 
 code {
