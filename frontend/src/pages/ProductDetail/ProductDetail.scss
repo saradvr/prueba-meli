@@ -1,0 +1,98 @@
+@use "../../styles/foundation/" as f;
+.product-detail {
+  grid-column: 1 / span 6;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .product-info {
+    padding: 0 10px;
+    .info {
+      font-size: 12px;
+      margin: 32px 0 16px 0;
+    }
+    .title {
+      font-size: 20px;
+    }
+    .price {
+      font-size: 30px;
+      margin: 32px 0;
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  }
+
+  .description-section {
+    padding: 0 10px;
+
+    .description-title {
+      font-size: 20px;
+    }
+
+    .description {
+      font-size: 14px;
+      margin: 32px 0;
+      color: map-get($map: f.$colors, $key: "gray-3");
+    }
+  }
+}
+
+.product-image-details {
+  width: 100%;
+  margin: 32px 0;
+}
+
+@media screen and #{f.$mq-tablet} {
+  .product-detail {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 2fr 1fr;
+
+    .product-image-details {
+      width: 680px;
+      margin: 0;
+    }
+
+    .product-image {
+      grid-column: 1 / span 7;
+      grid-row: 1;
+    }
+
+    .product-info {
+      grid-column: 8 / span 3;
+      grid-row: 1;
+
+      .info {
+        font-size: 14px;
+      }
+
+      .title {
+        font-size: 24px;
+        margin: 0;
+      }
+      .price {
+        font-size: 46px;
+      }
+      .btn-primary {
+        width: -webkit-fill-available;
+        margin-right: 32px;
+      }
+    }
+
+    .description-section {
+      margin-left: 32px;
+      grid-column: 1 / span 7;
+      grid-row: 2;
+
+      .description-title {
+        font-size: 28px;
+      }
+
+      .description {
+        font-size: 16px;
+      }
+    }
+  }
+}
