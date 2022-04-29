@@ -11,7 +11,13 @@ export const Header = ({ addClass }: HeaderProps): React.ReactElement => {
   return (
     <div className={classes}>
       <Link to="/" className="link-logo">
-        <img className="logo-meli" src={logoMeli} alt="Logo Mercado Libre" />
+        <img
+          className="logo-meli"
+          src={logoMeli}
+          alt="Logo Mercado Libre"
+          width={53}
+          height={36}
+        />
       </Link>
       <SearchBar />
     </div>
