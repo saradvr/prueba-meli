@@ -1,0 +1,14 @@
+@use "../../../../styles/foundation/" as *;
+
+.btn {
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: map-get($map: $colors, $key: "secondary");
+  color: white;
+  margin-right: 32px;
+  padding: 10px;
+}
