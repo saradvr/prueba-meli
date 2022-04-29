@@ -13,6 +13,10 @@ import { RootState } from "./store";
 import { getProduct, getProducts } from "./store/productReducer";
 import { ProductType, SearchResult } from "./store/product-types";
 import { Breadcrumbs } from "./components/core/links/Breadcrumbs";
+import {
+  ProductImage,
+  ProductImageTypes,
+} from "./components/core/images/ProductImage/";
 
 const Layout = () => {
   return (
@@ -57,6 +61,11 @@ const Results = () => {
         {searchParams.get("search") ? (
           items.map((item: ProductType) => (
             <li key={item.id}>
+              <ProductImage
+                image={item.picture}
+                altImage={item.title}
+                type={ProductImageTypes.CardResult}
+              />
               <Link to={item.id}>{item.title}</Link>
             </li>
           ))
