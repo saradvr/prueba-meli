@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "./store/hooks";
 import {
   Link,
   Outlet,
@@ -8,6 +9,9 @@ import {
   useParams,
 } from "react-router-dom";
 import { Header } from "./components/page/Header";
+import { RootState } from "./store";
+import { getProduct, getProducts } from "./store/productReducer";
+import { ProductType, SearchResult } from "./store/product-types";
 
 const Layout = () => {
   return (
@@ -27,19 +31,31 @@ const LayoutResults = () => {
   );
 };
 
-const Home = () => <div></div>;
+const Home = () => {
+  return <div></div>;
+};
 
 const Results = () => {
   const [searchParams] = useSearchParams();
-  const resultados = ["iphone", "ipod", "mac"];
+  const products: SearchResult = useAppSelector(
+    (state: RootState) => state.product.products
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const searchTerm = searchParams.get("search");
+    dispatch(getProducts(searchTerm ? searchTerm : ""));
+  }, [dispatch]);
+
+  const { items } = products;
   return (
     <>
       <div>Estos son los resultados</div>
       <ul>
         {searchParams.get("search") ? (
-          resultados.map((result) => (
-            <li key={result}>
-              <Link to={result}>{result}</Link>
+          items.map((item: ProductType) => (
+            <li key={item.id}>
+              <Link to={item.id}>{item.title}</Link>
             </li>
           ))
         ) : (
@@ -52,9 +68,20 @@ const Results = () => {
 
 const Product = () => {
   const { id } = useParams();
+  const product: ProductType = useAppSelector(
+    (state: RootState) => state.product.product
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getProduct(id ? id : ""));
+  }, [dispatch]);
+
   return (
     <>
-      <div>Este es el detalle del producto {id}</div>
+      <div>
+        Este es el detalle del producto {product.id} y {product.title}
+      </div>
       <Link to="/items">Volver a resultados</Link>
     </>
   );
