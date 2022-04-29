@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { ResultCard } from "./ResultCard";
 
 const mockProduct1 = {
@@ -31,11 +32,11 @@ const mockProduct2 = {
 
 describe("ResultCard test", () => {
   it("should render", () => {
-    render(<ResultCard product={mockProduct1} />);
+    render(<ResultCard product={mockProduct1} />, { wrapper: MemoryRouter });
     screen.getByText(/iPhone/i);
   });
   it("should render free shipping", () => {
-    render(<ResultCard product={mockProduct2} />);
+    render(<ResultCard product={mockProduct2} />, { wrapper: MemoryRouter });
     screen.getByAltText("free-shipping-icon");
   });
 });

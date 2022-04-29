@@ -1,23 +1,12 @@
 import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "./store/hooks";
-import {
-  Link,
-  Outlet,
-  Routes,
-  Route,
-  useSearchParams,
-  useParams,
-} from "react-router-dom";
+import { Link, Outlet, Routes, Route, useParams } from "react-router-dom";
 import { Header } from "./components/page/Header";
 import { RootState } from "./store";
-import { getProduct, getProducts } from "./store/productReducer";
-import { ProductType, SearchResult } from "./store/product-types";
-import { Breadcrumbs } from "./components/core/links/Breadcrumbs";
-import {
-  ProductImage,
-  ProductImageTypes,
-} from "./components/core/images/ProductImage/";
-import { ResultCard } from "./components/content/ResultCard/ResultCard";
+import { getProduct } from "./store/productReducer";
+import { ProductType } from "./store/product-types";
+import { Results } from "./pages/Results";
+import { LayoutResults } from "./pages/layouts/LayoutResults";
 
 const Layout = () => {
   return (
@@ -28,49 +17,8 @@ const Layout = () => {
   );
 };
 
-const LayoutResults = () => {
-  const categories = ["celulares", "apple", "iphone"];
-  return (
-    <>
-      <Breadcrumbs categories={categories} />
-      <Outlet />
-    </>
-  );
-};
-
 const Home = () => {
   return <div></div>;
-};
-
-const Results = () => {
-  const [searchParams] = useSearchParams();
-  const products: SearchResult = useAppSelector(
-    (state: RootState) => state.product.products
-  );
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const searchTerm = searchParams.get("search");
-    dispatch(getProducts(searchTerm ? searchTerm : ""));
-  }, [dispatch, searchParams]);
-
-  const { items } = products;
-  return (
-    <>
-      <div>Estos son los resultados</div>
-      <ul>
-        {searchParams.get("search") ? (
-          items.map((item: ProductType) => (
-            <li key={item.id}>
-              <ResultCard product={item} />
-            </li>
-          ))
-        ) : (
-          <div>Estos son TODOS nuestros productos</div>
-        )}
-      </ul>
-    </>
-  );
 };
 
 const Product = () => {
