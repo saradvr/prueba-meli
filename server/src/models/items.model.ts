@@ -11,6 +11,7 @@ export type Item = {
   sold_quantity?: number;
   description?: string;
   categories?: string[];
+  state: string;
 };
 
 export type ItemResponse = {

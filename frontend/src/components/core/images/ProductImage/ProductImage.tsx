@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { oneOf, string } from "prop-types";
 import { ProductImageProps, ProductImageTypes } from "./ProductImage-types";
+import "./ProductImage.scss";
 
 const ProductImageTypes_PropTypes = oneOf(
   Object.values(ProductImageTypes) as ProductImageTypes[]

@@ -11,6 +11,7 @@ export type ProductType = {
   sold_quantity?: number;
   description?: string;
   categories?: string[];
+  state?: string;
 };
 
 export type SearchResult = {
