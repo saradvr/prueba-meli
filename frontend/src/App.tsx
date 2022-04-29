@@ -6,21 +6,24 @@ import { LayoutSearch } from "./pages/layouts/LayoutSearch";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { ProductDetail } from "./pages/ProductDetail";
+import { HelmetProvider } from "react-helmet-async";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<LayoutSearch />}>
-          <Route index element={<Home />} />
-          <Route path="items" element={<LayoutResults />}>
-            <Route index element={<Results />} />
-            <Route path=":id" element={<ProductDetail />} />
+    <HelmetProvider>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LayoutSearch />}>
+            <Route index element={<Home />} />
+            <Route path="items" element={<LayoutResults />}>
+              <Route index element={<Results />} />
+              <Route path=":id" element={<ProductDetail />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </div>
+        </Routes>
+      </div>
+    </HelmetProvider>
   );
 };
 

@@ -27,7 +27,7 @@ export const IconButton = ({
   const classes = classNames("btn-icon", `btn-icon-${variety}`, addClass);
   return (
     <button className={classes} onClick={click} type={type}>
-      <img src={iconUrl} alt={altIcon} />
+      <img src={iconUrl} alt={altIcon} width={18} height={18} />
     </button>
   );
 };
