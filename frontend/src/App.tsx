@@ -12,6 +12,7 @@ import { Header } from "./components/page/Header";
 import { RootState } from "./store";
 import { getProduct, getProducts } from "./store/productReducer";
 import { ProductType, SearchResult } from "./store/product-types";
+import { Breadcrumbs } from "./components/core/links/Breadcrumbs";
 
 const Layout = () => {
   return (
@@ -23,9 +24,10 @@ const Layout = () => {
 };
 
 const LayoutResults = () => {
+  const categories = ["celulares", "apple", "iphone"];
   return (
     <>
-      <div>Breadcrumbs</div>
+      <Breadcrumbs categories={categories} />
       <Outlet />
     </>
   );
@@ -45,7 +47,7 @@ const Results = () => {
   useEffect(() => {
     const searchTerm = searchParams.get("search");
     dispatch(getProducts(searchTerm ? searchTerm : ""));
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
 
   const { items } = products;
   return (
