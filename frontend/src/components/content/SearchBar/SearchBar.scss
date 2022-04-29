@@ -3,6 +3,7 @@
   display: flex;
   grid-column: 2 / span 5;
   width: 100%;
+  margin: 9px 0 7px 0;
 }
 
 @media screen and #{$mq-tablet} {
