@@ -7,14 +7,20 @@ import "./Input.scss";
 const InputTypes_PropTypes = oneOf(Object.values(InputTypes) as InputTypes[]);
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ type, placeholder, required, addClass }: InputProps, ref) => {
+  (
+    { id, type, placeholder, required, ariaLabelledby, addClass }: InputProps,
+    ref
+  ) => {
     const classes = classNames("input", `input-${type}`, addClass);
     return (
       <input
         className={classes}
+        id={id}
+        name={id}
         placeholder={placeholder}
         ref={ref}
         required={required}
+        aria-labelledby={ariaLabelledby}
       />
     );
   }
@@ -28,12 +34,16 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
+  // unique id for the input
+  id: string.isRequired,
   // indicates if is a special type of input (for styles)
   type: InputTypes_PropTypes,
   // indicates if the input is a required field or not
   required: bool,
   // text to show as guide for the user inside the input
   placeholder: string,
+  // aria-labelledby attribute
+  ariaLabelledby: string.isRequired,
   // additional class for the Input
   addClass: string,
 };
