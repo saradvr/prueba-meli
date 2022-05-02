@@ -1,7 +1,9 @@
 export type InputProps = {
+  id: string;
   type?: InputTypes;
   required?: boolean;
   placeholder?: string;
+  ariaLabelledby: string;
   addClass?: string;
 };
 

@@ -26,10 +26,19 @@ export const SearchBar = ({ addClass }: SearchBarProps): React.ReactElement => {
 
   return (
     <form className={classes} onSubmit={handleSubmit}>
+      <label
+        htmlFor="input-busqueda"
+        id="label-search"
+        style={{ display: "none" }}
+      >
+        Ingresa un producto para buscar
+      </label>
       <Input
+        id="input-search"
         ref={inputRef}
         placeholder="Nunca dejes de buscar"
         type={InputTypes.Search}
+        ariaLabelledby="label-search"
       />
       <IconButton
         type={IconButtonTypes.Submit}
