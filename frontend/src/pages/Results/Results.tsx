@@ -1,12 +1,17 @@
 import classNames from "classnames";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { ResultCard } from "../../components/content/ResultCard";
 import { RootState } from "../../store";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { ProductType, SearchResult } from "../../store/product-types";
 import { getProducts } from "../../store/productReducer";
 import { ResultsProps } from "./Results-types";
+
+const ResultCard = React.lazy(
+  () => import("../../components/content/ResultCard/ResultCard")
+);
+
+const Loading = () => <div>Cargando...</div>;
 
 export const Results = ({ addClass }: ResultsProps): React.ReactElement => {
   const [searchParams] = useSearchParams();
@@ -26,19 +31,21 @@ export const Results = ({ addClass }: ResultsProps): React.ReactElement => {
 
   const { items } = products;
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <Loading />;
 
   return (
-    <div className={classes}>
-      {searchParams.get("search") ? (
-        items
-          .slice(1, 5)
-          .map((item: ProductType) => (
-            <ResultCard product={item} key={item.id} />
-          ))
-      ) : (
-        <div>No se encontraron productos</div>
-      )}
-    </div>
+    <React.Suspense fallback={<Loading />}>
+      <div className={classes}>
+        {searchParams.get("search") ? (
+          items
+            .slice(1, 5)
+            .map((item: ProductType) => (
+              <ResultCard product={item} key={item.id} />
+            ))
+        ) : (
+          <div>No se encontraron productos</div>
+        )}
+      </div>
+    </React.Suspense>
   );
 };

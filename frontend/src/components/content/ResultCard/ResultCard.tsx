@@ -10,7 +10,7 @@ import "./ResultCard.scss";
 import { object, string } from "prop-types";
 import { Link } from "react-router-dom";
 
-export const ResultCard = ({
+const ResultCard = ({
   product,
   addClass,
 }: ResultCardProps): React.ReactElement => {
@@ -61,3 +61,5 @@ ResultCard.propTypes = {
   // Additional class for the component
   addClass: string,
 };
+
+export default ResultCard;
